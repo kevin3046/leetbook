@@ -19,9 +19,9 @@ public class StringSolution {
 
         (new WordBreak()).wordBreak("leetcode", Arrays.asList("leet", "code"));
 
-        (new WordBreak()).wordBreak_dp("leetcode", Arrays.asList("leet", "code"));
+        (new WordBreak()).wordBreakDp("leetcode", Arrays.asList("leet", "code"));
 
-        (new WordBreak2()).wordBreak_2("catsanddog", Arrays.asList("cat", "cats", "and", "sand", "dog"));
+        (new WordBreak2()).wordBreak2("catsanddog", Arrays.asList("cat", "cats", "and", "sand", "dog"));
 
         Trie trie = new Trie();
 
@@ -31,6 +31,8 @@ public class StringSolution {
         trie.startsWith("app"); // 返回 true
         trie.insert("app");
         trie.search("app");     // 返回 true
+
+        (new IsAnagram()).isAnagram("anagram","nagaram");
     }
 
 }

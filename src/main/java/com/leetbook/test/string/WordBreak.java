@@ -104,7 +104,7 @@ public class WordBreak {
      * @param wordDict
      * @return
      */
-    public boolean wordBreak_dp(String s, List<String> wordDict) {
+    public boolean wordBreakDp(String s, List<String> wordDict) {
         boolean[] dp = new boolean[s.length() + 1];
         Set<String> set = new HashSet<>(wordDict);
         dp[0] = true;

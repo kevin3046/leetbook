@@ -18,7 +18,7 @@ public class WordBreak2 {
      * @param wordDict
      * @return
      */
-    public List<String> wordBreak_2(String s, List<String> wordDict) {
+    public List<String> wordBreak2(String s, List<String> wordDict) {
 
         HashSet<String> set = new HashSet<>(wordDict);
         int len = s.length();
@@ -27,7 +27,7 @@ public class WordBreak2 {
             return res;
         }
         //加入了优先判断是否可以进行分割,避免无效回溯超出时间限制
-        if(!(new WordBreak()).wordBreak_dp(s,wordDict)){
+        if(!(new WordBreak()).wordBreakDp(s,wordDict)){
             return res;
         }
 
