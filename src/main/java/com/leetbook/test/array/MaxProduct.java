@@ -10,6 +10,7 @@ import java.util.*;
 public class MaxProduct {
 
     /**
+     * @tag:回溯法
      * https://leetcode-cn.com/leetbook/read/top-interview-questions/xmk3rv/
      * 乘积最大子数组
      * 参考题解：https://leetcode-cn.com/problems/maximum-product-subarray/solution/duo-chong-si-lu-qiu-jie-by-powcai-3/
