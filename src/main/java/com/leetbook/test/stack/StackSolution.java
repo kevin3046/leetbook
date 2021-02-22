@@ -16,5 +16,7 @@ public class StackSolution {
         obj.pop();
         System.out.println(obj.top());
         System.out.println(obj.getMin());
+
+        (new Calculate()).calculate("3/2 ");
     }
 }

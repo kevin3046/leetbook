@@ -10,7 +10,7 @@ import java.util.*;
  * 滑动窗口最大值
  * https://leetcode-cn.com/leetbook/read/top-interview-questions/xatgye/
  * 参考题解：https://leetcode-cn.com/problems/sliding-window-maximum/solution/hua-dong-chuang-kou-zui-da-zhi-by-leetco-ki6m/
- * 解题思路：最大堆
+ * 解题思路：最大堆变种
  */
 public class MaxSlidingWindow {
 

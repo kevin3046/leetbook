@@ -1,5 +1,8 @@
 package com.leetbook.test.heap;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import java.util.LinkedList;
 
 /**
@@ -26,6 +29,16 @@ public class HeapSolution {
         (new MaxSlidingWindow()).maxSlidingWindow(new int[]{1,3,-1,-3,5,3,6,7,4,3,2,5,7},3);
 
         //(new MaxSlidingWindow()).maxSlidingWindow(new int[]{1,-1},1);
+
+        ScriptEngineManager manager = new ScriptEngineManager();
+        ScriptEngine engine = manager.getEngineByName("js");
+        try {
+            Object result = engine.eval("3*(2+2-1)+10+10");
+
+            System.out.println(result);
+        } catch (ScriptException e) {
+            e.printStackTrace();
+        }
 
         System.out.println("xx");
 
