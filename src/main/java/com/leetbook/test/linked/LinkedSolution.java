@@ -57,5 +57,14 @@ public class LinkedSolution {
         head2.next.next.next.next = new ListNode(5);
 
         (new OddEvenList()).oddEvenList(head2);
+
+        //3,2,0,-4
+        ListNode head3 = new ListNode(3);
+        head3.next = new ListNode(2);
+        head3.next.next = new ListNode(0);
+        head3.next.next.next = new ListNode(4);
+        head3.next.next.next.next = head3.next;
+        (new DetectCycle()).detectCycle(head3);
+
     }
 }
