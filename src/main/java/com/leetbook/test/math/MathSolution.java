@@ -17,6 +17,11 @@ public class MathSolution {
         (new CountPrimes()).countPrimes(10);
 
         (new CountNumbersWithUniqueDigits()).countNumbersWithUniqueDigits(3);
+
+        //104639
+        //104651
+        //234
+        (new CanMeasureWater()).canMeasureWater2(104639,104651,234);
     }
 
 }
