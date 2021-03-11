@@ -22,6 +22,8 @@ public class MathSolution {
         //104651
         //234
         (new CanMeasureWater()).canMeasureWater2(104639,104651,234);
+
+        (new LargestTriangleArea()).largestTriangleArea(new int[][]{{0,0},{0,1},{1,0},{0,2},{2,0}});
     }
 
 }

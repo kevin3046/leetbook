@@ -10,8 +10,9 @@ import com.leetbook.test.hash.TitleToNumber;
 public class DpSolution {
 
     public static void main(String[] args) {
-        int ret = (new SuperEggDrop()).superEggDrop(2,7);
+        int ret = (new UniquePathsAndNumWays()).uniquePathsAndNumWays(3,3);
 
         System.out.println(ret);
+
     }
 }
