@@ -71,7 +71,7 @@ public class WeiShiSolution {
 //        List<Integer> list = (new WeiShiTest()).readFile(filename);
 //        list.sort(((o1, o2) -> o1.compareTo(o2)));
 //        int index = list.size()/2;
-//        Long temp = (long) list.get(index) + list.get(index+1);
+//        Long temp = (long) list.get(index) + list.get(index-1);
 //        Integer ret = list.size()%2 == 0 ?((int)(temp/2)):list.get(index);
 //        System.out.println(ret);
 //        System.out.println("查找中位数耗时:"+(System.currentTimeMillis() - start)+" ms");

@@ -50,7 +50,7 @@ public class WeiShiTest0324 {
 //        list.sort(((o1, o2) -> o1.compareTo(o2)));
 //
 //        int index = list.size()/2;
-//        Long temp = (long) list.get(index) + list.get(index+1);
+//        Long temp = (long) list.get(index) + list.get(index-1);
 //        Integer ret = list.size()%2 == 0 ?((int)(temp/2)):list.get(index);
 //
 //        System.out.println(ret);
@@ -88,12 +88,12 @@ public class WeiShiTest0324 {
      * 2、对100亿个数字进行切割，取高位1个数字，例如分为：40亿=>10mill.dat_0 和 60亿=>10mill.dat_1
      *    二进制高位 0 代表正数 1代表负数 所以 目标中位数在 10mill.dat_1 文件中
      *    偏移量为：50亿-40亿=10亿
-     * 3、对10mill.dat_1文件，再取二进制的次高位，进行切割，例如分为：30亿=>10mill.dat_1_0 和 30亿=》10mill.dat_1_1
+     * 3、对10mill.dat_1文件，再取二进制的次高位，进行切割，例如分为：30亿=>10mill.dat_1_0 和 30亿=> 10mill.dat_1_1
      *    可知目标中位数在10mill.dat_1_0 中
      *    偏移量不变
-     * 4、对10mill.dat_1_0文件，再取二进制的次高位，进行切割，例如分为：5亿=>10mill.dat_1_0_0 和 25亿=》10mill.dat_1_0_1
+     * 4、对10mill.dat_1_0文件，再取二进制的次高位，进行切割，例如分为：5亿=>10mill.dat_1_0_0 和 25亿=> 10mill.dat_1_0_1
      *    可知目标中位数在10mill.dat_1_0_1 中
-     *    偏移量位：10亿-5亿=5亿
+     *    偏移量为：10亿-5亿=5亿
      * 5、按照这样的规律一直分割下去，直到目标文件可以读入内存，进行排序，再根据偏移量，取出中位数。
      *
      * @param filename  文件名
@@ -167,7 +167,7 @@ public class WeiShiTest0324 {
         int index = Integer.valueOf(String.valueOf(offset));
         //偶数取均值
         if (numsCount % 2 == 0) {
-            Long temp = (long) list.get(index) + list.get(index + 1);
+            Long temp = (long) list.get(index) + list.get(index - 1);
             return (int) (temp / 2);
         } else {
             return list.get(index);
@@ -190,11 +190,11 @@ public class WeiShiTest0324 {
         Integer bit = 32 - cutTimes;//切割文件高位掩码计算值,每次切割之后减少1位
 
         try {
-            File file0 = new File(cutFile0); // 相对路径，如果没有则要建立一个新的output。txt文件
+            File file0 = new File(cutFile0);
             file0.createNewFile(); // 创建新文件
             BufferedWriter out0 = new BufferedWriter(new FileWriter(file0));
 
-            File file1 = new File(cutFile1); // 相对路径，如果没有则要建立一个新的output。txt文件
+            File file1 = new File(cutFile1);
             file1.createNewFile(); // 创建新文件
             BufferedWriter out1 = new BufferedWriter(new FileWriter(file1));
 

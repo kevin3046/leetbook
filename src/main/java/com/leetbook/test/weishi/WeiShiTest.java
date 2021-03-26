@@ -274,7 +274,7 @@ public class WeiShiTest {
         int index = Integer.valueOf(String.valueOf(offset));
         //偶数取均值
         if (numsCount % 2 == 0) {
-            Long temp = (long) list.get(index) + list.get(index + 1);
+            Long temp = (long) list.get(index) + list.get(index - 1);
             return (int) (temp / 2);
         } else {
             return list.get(index);
