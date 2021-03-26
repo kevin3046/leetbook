@@ -33,6 +33,14 @@ public class StringSolution {
         trie.search("app");     // 返回 true
 
         (new IsAnagram()).isAnagram("anagram","nagaram");
+
+
+        boolean ret = (new IsMatch()).isMatch2("aaab","a*b");
+
+        System.out.println(ret);
+
+        (new GenerateParenthesis()).generateParenthesis(3);
+
     }
 
 }
