@@ -31,7 +31,7 @@ public class WeiShiTest0324 {
          * 查找中位数耗时:62549 ms
          */
         String filename = "/tmp/10mill.dat";
-        Long numsCount = 100000000L;//1亿
+        Long numsCount = 10000000L;//1亿
         Long heapSize = 5 * 1024 * 1024L;//5MB大小的内存,转换为字节byte（注：1个整数占4个byte）
 
         Long start = System.currentTimeMillis();
@@ -44,17 +44,17 @@ public class WeiShiTest0324 {
         System.out.println("查找中位数耗时:" + (System.currentTimeMillis() - start) + " ms");
 
         //1000万以下进行验证
-//        start = System.currentTimeMillis();
-//        List<Integer> list = (new WeiShiTest0324()).readFile(filename);
-//
-//        list.sort(((o1, o2) -> o1.compareTo(o2)));
-//
-//        int index = list.size()/2;
-//        Long temp = (long) list.get(index) + list.get(index-1);
-//        Integer ret = list.size()%2 == 0 ?((int)(temp/2)):list.get(index);
-//
-//        System.out.println(ret);
-//        System.out.println("查找中位数耗时:"+(System.currentTimeMillis() - start)+" ms");
+        start = System.currentTimeMillis();
+        List<Integer> list = (new WeiShiTest0324()).readFile(filename);
+
+        list.sort(((o1, o2) -> o1.compareTo(o2)));
+
+        int index = list.size()/2;
+        Long temp = (long) list.get(index) + list.get(index-1);
+        Integer ret = list.size()%2 == 0 ?((int)(temp/2)):list.get(index);
+
+        System.out.println(ret);
+        System.out.println("查找中位数耗时:"+(System.currentTimeMillis() - start)+" ms");
 
     }
 
@@ -215,6 +215,7 @@ public class WeiShiTest0324 {
                     out1.write(number + "\r\n");
                 }
             }
+            in.close();
             out0.flush();
             out0.close();
 
@@ -243,6 +244,7 @@ public class WeiShiTest0324 {
             while ((str = in.readLine()) != null) {
                 res.add(Integer.valueOf(str));
             }
+            in.close();
             return res;
         } catch (IOException e) {
             e.printStackTrace();

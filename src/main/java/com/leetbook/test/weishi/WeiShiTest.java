@@ -2,10 +2,7 @@ package com.leetbook.test.weishi;
 
 import java.io.*;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Random;
+import java.util.*;
 
 /**
  * @Auther: kevin3046@163.com
@@ -117,6 +114,7 @@ public class WeiShiTest {
             while ((str = in.readLine()) != null) {
                 res.add(Integer.valueOf(str));
             }
+            in.close();
             return res;
         } catch (IOException e) {
             e.printStackTrace();
@@ -322,17 +320,164 @@ public class WeiShiTest {
                     out1.write(number + "\r\n");
                 }
             }
+            in.close();
             out0.flush();
             out0.close();
 
             out1.flush();
             out1.close();
 
+
             return new Long[]{file0Counts, file1Counts};
 
         } catch (IOException e) {
             e.printStackTrace();
             return new Long[]{};
+        }
+    }
+
+    /**
+     * 桶排序
+     * 参考文章：https://zhuanlan.zhihu.com/p/75397875
+     * 参考文章桶排序：https://www.cnblogs.com/zer0Black/p/6169858.html#3
+     * @param filename
+     * @param numsCount
+     * @param heapSize
+     * @return
+     */
+    public int findMedian3(String filename, Long numsCount, Long heapSize) {
+
+        List<Long> res;
+        String cutFile = filename;
+        Integer times = 1;
+        Long mid = numsCount / 2;
+        Long offset = mid;
+        Long currentCount;
+        Integer currentIndex = -1;
+        Long maxProcessSize = heapSize / 4;
+        while (true) {
+            res = cutFile3(cutFile, times);
+            times++;
+            currentCount = 0L;
+            for (int i = 0; i < res.size(); i++) {
+                currentCount += res.get(i);
+                if (currentCount >= offset) {
+                    cutFile = cutFile + "_" + i;
+                    currentIndex = i;
+                    //减去前面桶累加的和
+                    offset = offset - (currentCount - res.get(i));
+                    break;
+                }
+            }
+            if (currentIndex > -1 && res.get(currentIndex) <= maxProcessSize) {
+                break;
+            }
+
+        }
+        //堆排序 测试结果未减少时间
+//        PriorityQueue<Integer> queue = new PriorityQueue();
+//        offset = offset-1;
+//
+//        try {
+//            BufferedReader in = new BufferedReader(new FileReader(cutFile));
+//            String str;
+//            while ((str = in.readLine()) != null) {
+//                queue.add(Integer.valueOf(str));
+//                if(queue.size()>offset){
+//                    queue.poll();
+//                }
+//            }
+//            in.close();
+//            if(numsCount %2 == 0){
+//                Long temp = (long)queue.poll() + queue.poll();
+//                return (int)(temp/2);
+//            }else{
+//                queue.poll();
+//                return queue.peek();
+//            }
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            return 0;
+//        }
+        return findMedian3Helper(cutFile,offset,numsCount,currentIndex);
+
+    }
+
+    public int findMedian3Helper(String cutFile,Long offset,Long numsCount,Integer currentIndex){
+        List<Integer> list = readFile(cutFile);
+        if (offset - 1 < 0) {
+            String t = cutFile.substring(0, cutFile.lastIndexOf("_"));
+            t += "_" + (currentIndex - 1);
+            List<Integer> temp = readFile(t);
+            list.add(temp.get(temp.size() - 1));
+        }
+        list.sort(((o1, o2) -> o1.compareTo(o2)));
+        int index = Integer.valueOf(String.valueOf(offset));
+        //偶数取均值
+        if (numsCount % 2 == 0) {
+            Long temp = (long) list.get(index) + list.get(index - 1);
+            return (int) (temp / 2);
+        } else {
+            return list.get(index);
+        }
+    }
+
+    public List<Long> cutFile3(String cutFile, Integer times) {
+        //times 24,16,8,0
+        List<Long> counts = new ArrayList<>(256);
+        Map<Integer, File> fileMap = new HashMap<>();
+        Map<File, BufferedWriter> writerMap = new HashMap<>();
+        for (int i = 0; i <= 255; i++) {
+            createFile(i, cutFile + "_" + i, fileMap, writerMap);
+            counts.add(0L);
+        }
+        int bit = 32 - 8 * times;
+        try {
+            BufferedReader in = new BufferedReader(new FileReader(cutFile));
+            String str;
+            Integer number;
+            Integer n;
+            while ((str = in.readLine()) != null) {
+                number = Integer.valueOf(str);
+                n = (number >> bit) & 0xff;
+                writerMap.get(fileMap.get(n)).write(number + "\r\n");
+                counts.set(n, counts.get(n) + 1);
+            }
+            //关闭文件流
+            in.close();
+            closeFile(fileMap, writerMap);
+            return counts;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+
+    private void createFile(Integer index, String filename, Map<Integer, File> fileMap, Map<File, BufferedWriter> writerMap) {
+        if (fileMap.containsKey(index)) {
+            return;
+        }
+        try {
+            File file = new File(filename); //
+            file.createNewFile(); // 创建新文件
+            BufferedWriter out = new BufferedWriter(new FileWriter(file));
+            fileMap.put(index, file);
+            writerMap.put(file, out);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void closeFile(Map<Integer, File> fileMap, Map<File, BufferedWriter> writerMap) {
+
+        for (Integer index : fileMap.keySet()) {
+            try {
+                writerMap.get(fileMap.get(index)).flush();
+                writerMap.get(fileMap.get(index)).close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

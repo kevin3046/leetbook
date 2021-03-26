@@ -1,5 +1,7 @@
 package com.leetbook.test.weishi;
 
+import java.util.List;
+
 /**
  * @Auther: kevin3046@163.com
  * @Date: 2021/3/24 16:16
@@ -16,7 +18,7 @@ public class WeiShiSolution {
 
         System.out.println((new WeiShiTest()).myPow(2.0,1000));
 
-        String a = "0111 1111 0000 0000 0000 0000 0000 0000";
+        String a = "0111 1111 1111 1111 0000 0000 0000 0000";
         Integer a0 = Integer.parseInt(a.replaceAll(" ",""),2);
         System.out.println(a0);
 
@@ -51,20 +53,30 @@ public class WeiShiSolution {
          * 构造文件耗时:10727 ms
          * 1073744830
          * 查找中位数耗时:62549 ms
+         *
+         * 三、桶排序 1亿 5MB情况下模拟结果:
+         * 构造文件耗时:11605 ms
+         * 1073739987
+         * 桶排序查找中位数耗时:21926 ms
+         * 对比来看，减少了3倍的时间
+         *
          */
         String filename = "/tmp/10mill.dat";
         Long numsCount = 100000000L;//1亿
         Long heapSize = 5 * 1024 * 1024L;//5MB大小的内存,转换为字节byte（注：1个整数占4个byte）
-
+//
         Long start = System.currentTimeMillis();
         (new WeiShiTest()).buildFile(filename,numsCount);
         System.out.println("构造文件耗时:"+(System.currentTimeMillis() - start)+" ms");
-
+//
+//
+//        start = System.currentTimeMillis();
+//        System.out.println((new WeiShiTest()).findMedian2(filename,numsCount,heapSize));
+//        System.out.println("切割查找中位数耗时:"+(System.currentTimeMillis() - start)+" ms");
 
         start = System.currentTimeMillis();
-        System.out.println((new WeiShiTest()).findMedian2(filename,numsCount,heapSize));
-        System.out.println("查找中位数耗时:"+(System.currentTimeMillis() - start)+" ms");
-
+        System.out.println((new WeiShiTest()).findMedian3(filename,numsCount,heapSize));
+        System.out.println("桶排序查找中位数耗时:"+(System.currentTimeMillis() - start)+" ms");
 
         //1000万以下进行验证
 //        start = System.currentTimeMillis();
@@ -75,6 +87,11 @@ public class WeiShiSolution {
 //        Integer ret = list.size()%2 == 0 ?((int)(temp/2)):list.get(index);
 //        System.out.println(ret);
 //        System.out.println("查找中位数耗时:"+(System.currentTimeMillis() - start)+" ms");
+
+
+
+//
+
 
     }
 
