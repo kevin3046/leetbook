@@ -1,5 +1,7 @@
-package com.leetbook.test.weishi;
+package com.leetbook.test.temp;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -42,6 +44,14 @@ public class WeiShiSolution {
 
         System.out.println( a0  & 0xff );// 再次高8位,低8位
 
+        List<Integer> list  = new ArrayList<>();
+        list.add(2);
+        list.add(2);
+        list.add(2);
+        list.add(2);
+        list.add(2);
+
+        System.out.println(Collections.binarySearch(list,10));
 
         /**
          * 一、10亿 50MB情况下模拟结果：
@@ -65,18 +75,18 @@ public class WeiShiSolution {
         Long numsCount = 100000000L;//1亿
         Long heapSize = 5 * 1024 * 1024L;//5MB大小的内存,转换为字节byte（注：1个整数占4个byte）
 //
-        Long start = System.currentTimeMillis();
-        (new WeiShiTest()).buildFile(filename,numsCount);
-        System.out.println("构造文件耗时:"+(System.currentTimeMillis() - start)+" ms");
+//        Long start = System.currentTimeMillis();
+//        (new WeiShiTest()).buildFile(filename,numsCount);
+//        System.out.println("构造文件耗时:"+(System.currentTimeMillis() - start)+" ms");
 //
 //
 //        start = System.currentTimeMillis();
 //        System.out.println((new WeiShiTest()).findMedian2(filename,numsCount,heapSize));
 //        System.out.println("切割查找中位数耗时:"+(System.currentTimeMillis() - start)+" ms");
 
-        start = System.currentTimeMillis();
-        System.out.println((new WeiShiTest()).findMedian3(filename,numsCount,heapSize));
-        System.out.println("桶排序查找中位数耗时:"+(System.currentTimeMillis() - start)+" ms");
+//        start = System.currentTimeMillis();
+//        System.out.println((new WeiShiTest()).findMedian3(filename,numsCount,heapSize));
+//        System.out.println("桶排序查找中位数耗时:"+(System.currentTimeMillis() - start)+" ms");
 
         //1000万以下进行验证
 //        start = System.currentTimeMillis();
