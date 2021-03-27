@@ -340,6 +340,7 @@ public class WeiShiTest {
      * 桶排序
      * 参考文章：https://zhuanlan.zhihu.com/p/75397875
      * 参考文章桶排序：https://www.cnblogs.com/zer0Black/p/6169858.html#3
+     *
      * @param filename
      * @param numsCount
      * @param heapSize
@@ -400,11 +401,11 @@ public class WeiShiTest {
 //            e.printStackTrace();
 //            return 0;
 //        }
-        return findMedian3Helper(cutFile,offset,numsCount,currentIndex);
+        return findMedian3Helper(cutFile, offset, numsCount, currentIndex);
 
     }
 
-    public int findMedian3Helper(String cutFile,Long offset,Long numsCount,Integer currentIndex){
+    public int findMedian3Helper(String cutFile, Long offset, Long numsCount, Integer currentIndex) {
         List<Integer> list = readFile(cutFile);
         if (offset - 1 < 0) {
             String t = cutFile.substring(0, cutFile.lastIndexOf("_"));
