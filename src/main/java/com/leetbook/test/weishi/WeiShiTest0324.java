@@ -165,6 +165,7 @@ public class WeiShiTest0324 {
                         Integer number = this.binarySource.next();
                         switchOut(number).write(number);
                     }
+                    this.binarySource.close();
                     this.binaryOut0.close();
                     this.binaryOut1.close();
                     if (this.offset > this.binaryOut0.getCounts()) {
@@ -189,7 +190,13 @@ public class WeiShiTest0324 {
                 }
 
             }
-            return findMedianHelper();
+            try{
+                this.binarySource.close();
+                return findMedianHelper();
+            }catch (IOException e){
+                e.printStackTrace();
+                return 0;
+            }
         }
 
         private void maskReset() {
@@ -297,7 +304,13 @@ public class WeiShiTest0324 {
                 }
 
             }
-            return findMedianHelper();
+            try{
+                this.binarySource.close();
+                return findMedianHelper();
+            }catch (IOException e){
+                e.printStackTrace();
+                return 0;
+            }
         }
 
         private BinaryOut switchOut(Integer number) {
