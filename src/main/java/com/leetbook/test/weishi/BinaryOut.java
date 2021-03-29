@@ -34,6 +34,12 @@ public class BinaryOut implements Closeable {
 
     }
 
+    public void writeString(String num) throws IOException {
+
+        writer.write(num+"\r\n");
+        counts.incrementAndGet();
+    }
+
     public String getFilename() {
         return filename;
     }

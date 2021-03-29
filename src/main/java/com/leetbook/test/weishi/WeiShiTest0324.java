@@ -49,6 +49,7 @@ public class WeiShiTest0324 {
         System.out.println((new BinaryMedian(filename, numsCount, heapSize)).find());
         System.out.println("二分切割文件,查找中位数耗时:" + (System.currentTimeMillis() - start) + " ms");
 
+        //暂不支持文件中存在负数
 //        start = System.currentTimeMillis();
 //        System.out.println((new BucketMedian(filename, numsCount, heapSize)).find());
 //        System.out.println("桶排序切割文件,查找中位数耗时:" + (System.currentTimeMillis() - start) + " ms");

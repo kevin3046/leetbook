@@ -38,6 +38,17 @@ public class BinarySource implements Closeable {
         return false;
     }
 
+    public String nextString(){
+        if (this.cachedLine == null) {
+            if (!hasNext()) {
+                throw new IllegalStateException("no content");
+            }
+        }
+        String num = this.cachedLine;
+        this.cachedLine = null;
+        return num;
+    }
+
     public int next() {
         if (this.cachedLine == null) {
             if (!hasNext()) {
