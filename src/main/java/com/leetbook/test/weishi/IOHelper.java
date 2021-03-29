@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * @Auther: kevin3046@163.com
@@ -58,7 +59,7 @@ public class IOHelper {
             BufferedWriter writer = getBufferedWriter(filename);
             Random random = new Random();
             for (Long i = 0L; i < numsCount; i++) {
-                writer.write(random.nextInt(Integer.MAX_VALUE) + "\r\n"); // \r\n即为换行
+                writer.write(ThreadLocalRandom.current().nextInt(Integer.MIN_VALUE,Integer.MAX_VALUE) + "\r\n"); // \r\n即为换行
                 //writer.write((i+1)+"\r\n"); // \r\n即为换行
             }
             writer.flush(); // 把缓存区内容压入文件

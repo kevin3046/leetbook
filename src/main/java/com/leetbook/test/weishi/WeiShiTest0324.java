@@ -38,20 +38,20 @@ public class WeiShiTest0324 {
          * 对比来看，减少了3倍的时间
          */
         String filename = "/tmp/10mill.dat";
-        Long numsCount = 100000000L;//1亿
+        Long numsCount = 10000000L;//1亿
         Long heapSize = 5 * 1024 * 1024L;//5MB大小的内存,转换为字节byte（注：1个整数占4个byte）
 
         Long start = System.currentTimeMillis();
         IOHelper.buildRandomFile(filename, numsCount);
         System.out.println("构造文件耗时:" + (System.currentTimeMillis() - start) + " ms");
 
-//        start = System.currentTimeMillis();
-//        System.out.println((new BinaryMedian(filename, numsCount, heapSize)).find());
-//        System.out.println("二分切割文件,查找中位数耗时:" + (System.currentTimeMillis() - start) + " ms");
-
         start = System.currentTimeMillis();
-        System.out.println((new BucketMedian(filename, numsCount, heapSize)).find());
-        System.out.println("桶排序切割文件,查找中位数耗时:" + (System.currentTimeMillis() - start) + " ms");
+        System.out.println((new BinaryMedian(filename, numsCount, heapSize)).find());
+        System.out.println("二分切割文件,查找中位数耗时:" + (System.currentTimeMillis() - start) + " ms");
+
+//        start = System.currentTimeMillis();
+//        System.out.println((new BucketMedian(filename, numsCount, heapSize)).find());
+//        System.out.println("桶排序切割文件,查找中位数耗时:" + (System.currentTimeMillis() - start) + " ms");
 
         //1000万以下进行验证
         if (numsCount <= 10000000L) {
@@ -109,6 +109,8 @@ public class WeiShiTest0324 {
 
         private Integer mask = 1 << 31;
 
+        private boolean unsign = false;//是否处理了负数文件
+
         public BinaryMedian(String filename, Long numsCount, Long heapSize) {
 
             this.binarySource = new BinarySource(filename);
@@ -161,9 +163,17 @@ public class WeiShiTest0324 {
             while (true) {
 
                 try {
-                    while (this.binarySource.hasNext()) {
-                        Integer number = this.binarySource.next();
-                        switchOut(number).write(number);
+                    //首次处理把负数处理为正数
+                    if (bit == 31) {
+                        while (this.binarySource.hasNext()) {
+                            Integer number = this.binarySource.next();
+                            switchOut(number).write(Math.abs(number));
+                        }
+                    } else {
+                        while (this.binarySource.hasNext()) {
+                            Integer number = this.binarySource.next();
+                            switchOut(number).write(number);
+                        }
                     }
                     this.binarySource.close();
                     this.binaryOut0.close();
@@ -172,9 +182,16 @@ public class WeiShiTest0324 {
                         this.offset = this.offset - this.binaryOut0.getCounts();
                         this.binarySource = new BinarySource(this.binaryOut1.getFilename());
                     } else {
+                        //首次切割完,专门处理负数
+                        if (this.bit == 31) {
+                            this.offset = this.offset - this.binaryOut1.getCounts();
+                        }
                         this.binarySource = new BinarySource(this.binaryOut0.getFilename());
                     }
-
+                    //第一次完成后,使用正数还是负数文件
+                    if (this.binarySource.getFilename().equals(this.binaryOut1.getFilename())) {
+                        this.unsign = true;
+                    }
                     if (this.binaryOut0.getCounts() > 0 && this.binaryOut0.getCounts() < this.maxProcessSize) {
                         break;
                     }
@@ -190,10 +207,10 @@ public class WeiShiTest0324 {
                 }
 
             }
-            try{
+            try {
                 this.binarySource.close();
                 return findMedianHelper();
-            }catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
                 return 0;
             }
@@ -208,7 +225,13 @@ public class WeiShiTest0324 {
             List<Integer> list = IOHelper.readFileToList(binarySource.getFilename());
             Collections.sort(list);
             if (numsCount % 2 == 0) {
+                if (this.unsign) {
+                    return -(int) (((long) list.get(offset.intValue()) + list.get(offset.intValue() - 1)) / 2);
+                }
                 return (int) (((long) list.get(offset.intValue()) + list.get(offset.intValue() - 1)) / 2);
+            }
+            if (this.unsign) {
+                return -list.get(offset.intValue());
             }
             return list.get(offset.intValue());
         }
@@ -304,10 +327,10 @@ public class WeiShiTest0324 {
                 }
 
             }
-            try{
+            try {
                 this.binarySource.close();
                 return findMedianHelper();
-            }catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
                 return 0;
             }

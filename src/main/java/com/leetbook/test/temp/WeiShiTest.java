@@ -3,6 +3,7 @@ package com.leetbook.test.temp;
 import java.io.*;
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * @Auther: kevin3046@163.com
@@ -138,9 +139,16 @@ public class WeiShiTest {
             BufferedWriter out = new BufferedWriter(new FileWriter(writename));
             Random random = new Random();
             for (Long i = 0L; i < numsCount; i++) {
-                out.write(random.nextInt(Integer.MAX_VALUE) + "\r\n"); // \r\n即为换行
+                out.write(ThreadLocalRandom.current().nextInt(Integer.MIN_VALUE,Integer.MAX_VALUE) + "\r\n"); // \r\n即为换行
                 //out.write((i+1)+"\r\n"); // \r\n即为换行
             }
+
+//            for(Long i=0L;i<numsCount/2+10;i++){
+//                out.write((i+1)*-1+"\r\n");
+//            }
+//            for(Long i=numsCount/2+10;i<numsCount;i++){
+//                out.write((i+1)+"\r\n");
+//            }
             out.flush(); // 把缓存区内容压入文件
             out.close(); // 最后记得关闭文件
 
@@ -226,20 +234,44 @@ public class WeiShiTest {
 
         //如果内存足够,直接读取文件进行查找
         if (numsCount <= maxProcessSize) {
-            return findMedian2Helper(cutFile, mid, numsCount);
+            return findMedian2Helper(cutFile, mid, numsCount,false);
         }
 
+        boolean unsign = false;
         //内存不足,开始切割文件,进行处理
         while (true) {
             temp = cutFile2(cutFile, cutFile0, cutFile1, cutTimes);
             file0Counts = temp[0];
             file1Counts = temp[1];
 
+            /**
+             * 正常情况下，无负数举例
+             * 例子一：
+             * file_0 4900
+             * file_1 5100
+             * offset:5000
+             * 那么 offset > file_0 则 中位数在 file_1 的第100个
+             *
+             * 例子二，包含负数：
+             * file_0 5100
+             * file_1 4900
+             * offset:5000
+             * 那么 offset < file_0 则 取file_0中找，但是需要减去file_1中的负数个数
+             * 5000-4900 = 100 则中位数在file_0 的第100个
+             */
             if (offset > file0Counts) {
                 offset = offset - file0Counts;
                 cutFile = cutFile1;
             } else {
+                //专门处理负数，如果待处理的中位数在正数文件中，则减去负数文件的个数
+                //后续不需要再处理，因为首次输出临时文件的时候，进行了Math.abs，已经都转为了正数
+                if(cutTimes == 1){
+                    offset = offset - file1Counts;
+                }
                 cutFile = cutFile0;
+            }
+            if(cutFile.equals(cutFile1)){
+                unsign = true;
             }
             //下一次要切割的文件目标名
             cutFile0 = cutFile + "_0";
@@ -255,7 +287,7 @@ public class WeiShiTest {
             }
         }
 
-        return findMedian2Helper(cutFile, offset, numsCount);
+        return findMedian2Helper(cutFile, offset, numsCount,unsign);
     }
 
     /**
@@ -266,15 +298,21 @@ public class WeiShiTest {
      * @param numsCount
      * @return
      */
-    private Integer findMedian2Helper(String cutFile, Long offset, Long numsCount) {
+    private Integer findMedian2Helper(String cutFile, Long offset, Long numsCount,boolean unsign) {
         List<Integer> list = readFile(cutFile);
         list.sort(((o1, o2) -> o1.compareTo(o2)));
         int index = Integer.valueOf(String.valueOf(offset));
         //偶数取均值
         if (numsCount % 2 == 0) {
             Long temp = (long) list.get(index) + list.get(index - 1);
+            if(unsign){
+                return -(int)(temp / 2);
+            }
             return (int) (temp / 2);
         } else {
+            if(unsign){
+                return - list.get(index);
+            }
             return list.get(index);
         }
     }
@@ -309,15 +347,31 @@ public class WeiShiTest {
             int mask = 1 << bit;
             Integer number;
             Integer n;
-            while ((str = in.readLine()) != null) {
-                number = Integer.valueOf(str);
-                n = (number & mask) != 0 ? 1 : 0;
-                if (n == 0) {
-                    file0Counts++;
-                    out0.write(number + "\r\n");
-                } else {
-                    file1Counts++;
-                    out1.write(number + "\r\n");
+            if(bit == 31) {
+                while ((str = in.readLine()) != null) {
+                    number = Integer.valueOf(str);
+                    n = (number & mask) != 0 ? 1 : 0;
+                    number = Math.abs(number);
+
+                    if (n == 0) {
+                        file0Counts++;
+                        out0.write(number + "\r\n");
+                    } else {
+                        file1Counts++;
+                        out1.write(number + "\r\n");
+                    }
+                }
+            }else{
+                while ((str = in.readLine()) != null) {
+                    number = Integer.valueOf(str);
+                    n = (number & mask) != 0 ? 1 : 0;
+                    if (n == 0) {
+                        file0Counts++;
+                        out0.write(number + "\r\n");
+                    } else {
+                        file1Counts++;
+                        out1.write(number + "\r\n");
+                    }
                 }
             }
             in.close();
