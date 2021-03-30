@@ -13,25 +13,28 @@ public class BigDataSolution {
 
     public static void main(String[] args){
 
-        String filename = "/tmp/ip_10mill.dat";
-        Long numsCounts = 1000000L;
-        Long heapSize = 1 * 1024 * 1024L;
-        Integer top = 5;
-        IOHelper.buildRandomIpFile(filename,numsCounts);
-
-        (new BigDataTest.IpTop(filename,numsCounts,heapSize,top)).find();
-
-        //PriorityQueue<Integer> queue = new PriorityQueue<>((x,y) -> (y - x));
-//        PriorityQueue<Integer> queue = new PriorityQueue<>();
-//        int[] temp = new int[]{1,1,1,1,1,1,1,1,30,10,30};
-//        for(int i=0;i<temp.length;i++){
-//            queue.add(temp[i]);
-//            if(queue.size()>3){
-//                queue.poll();
-//            }
-//        }
+//        String filename = "/tmp/ip_10mill.dat";
+//        Long numsCounts = 1000000L;
+//        Long heapSize = 1 * 1024 * 1024L;
+//        Integer top = 5;
+//        IOHelper.buildRandomIpFile(filename,numsCounts);
 //
-//        System.out.println(queue.size());
+//        (new BigDataTest.IpTop(filename,numsCounts,heapSize,top)).find();
+
+        long length = Integer.MAX_VALUE * 1L;
+        System.out.println((int) (length >> 5) + ((length & 31) > 0 ? 1 : 0));
+
+        long n = 400000000L * 1L;
+
+        int index = (int) n>>5;
+
+        int offset = (int) n & 31;
+
+        System.out.println(index+"="+offset);
+
+
+        int a = ~(0x3 << 2);
+        System.out.println( 4 & a);
 
     }
 }
