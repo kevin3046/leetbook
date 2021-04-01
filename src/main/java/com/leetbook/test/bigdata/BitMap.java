@@ -1,13 +1,22 @@
 package com.leetbook.test.bigdata;
 
 import java.util.Arrays;
-import java.util.Collections;
 
 /**
  * @Auther: kevin3046@163.com
  * @Date: 2021/3/29 19:05
  * @Description:bitmap的java实现
  * https://www.jianshu.com/p/9e7f8f33a61a
+ * 单bitmap：Integer.MAX_VALUE = 2^31 需要内存大小 2^31/32*4/1024/1024=256MB内存
+ * 双bitmap：Integer.MAX_VALUE = 2^31 需要内存大小 2^31/16*4/1024/1024=512MB内存
+ * 包含正负数的情况下：2^32 单bitmap需要512MB内存，双bitmap需要1G内存
+ *
+ * 单bitmap可以解决的问题：
+ * 1、给40亿个不重复的unsigned int的整数，没排过序的，然后再给一个数，如何快速判断这个数是否在那40亿个数当中？
+ *
+ * 双bitmap可以解决的问题：
+ * 1、在2.5亿个整数中找出不重复的整数
+ * 2、海量数据中寻找中位数（解法：我们依次读取10G数据，然后转换为位图表示，去掉所有bit位为00的位置，找到中间下标就是中位数）
  */
 public class BitMap {
 
