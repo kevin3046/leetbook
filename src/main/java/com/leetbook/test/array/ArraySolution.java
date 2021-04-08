@@ -31,5 +31,14 @@ public class ArraySolution {
         (new Permute()).permute(new int[]{1,2,3});
 
         (new LengthOfLIS()).lengthOfLIS(new int[]{10,9,2,5,3,7,101,18});
+
+        (new NumIslands()).numIslands(new char[][]{{'1','1','1','1','0'},{'1','1','0','1','0'},{'1','1','0','0','0'},{'0','0','0','0','0'}});
+
+
+        (new LargestRectangleArea()).largestRectangleArea(new int[]{2,1,5,6,2,3});
+
+        (new Rotate48()).rotate(new int[][]{{1,2,3},{4,5,6},{7,8,9}});
+
+        //(new Rotate48()).rotate(new int[][]{{5,1,9,11},{2,4,8,10},{13,3,6,7},{15,14,12,16}});
     }
 }
