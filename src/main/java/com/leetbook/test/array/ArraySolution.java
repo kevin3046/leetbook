@@ -40,5 +40,9 @@ public class ArraySolution {
         (new Rotate48()).rotate(new int[][]{{1,2,3},{4,5,6},{7,8,9}});
 
         //(new Rotate48()).rotate(new int[][]{{5,1,9,11},{2,4,8,10},{13,3,6,7},{15,14,12,16}});
+
+        (new Subsets()).subsets(new int[]{1,2,3});
+
+        (new CoinChange()).coinChange(new int[]{1,2,5},11);
     }
 }

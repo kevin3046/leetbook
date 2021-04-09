@@ -31,53 +31,35 @@ public class GenerateParenthesis {
         dfs(n, path + "(", res, open + 1, close);
         dfs(n, path + ")", res, open, close + 1);
     }
-
-//    public List<String> generateParenthesis(int n) {
-//        List<String> res = new ArrayList<>();
-//        if (n <= 0) {
-//            return res;
-//        }
-//        dfs(n, "", res);
-//        return res;
-//    }
-//
-//    private void dfs(int n, String path, List<String> res) {
-//        if (path.length() == 2 * n) {
-//            res.add(path);
-//            return;
-//        }
-//
-//        dfs(n, path + "(", res);
-//        dfs(n, path + ")", res);
-//    }
-
-
-//    Set<String> set = new HashSet<>();
-//
 //    public List<String> generateParenthesis(int n) {
 //
-//        char[] nums = new char[n*2];
-//        for(int i=0;i<n*2;i++){
-//            nums[i] = i%2==0?'(':')';
+//        int[] nums = new int[n*2];
+//        for(int i=1;i<=n*2;i++){
+//            nums[i-1] = i;
 //        }
 //
 //
-//        List<List<Character>> list = new ArrayList<>();
-//        Deque<Character> path = new ArrayDeque<>();
+//        List<List<Integer>> list = new ArrayList<>();
+//        Deque<Integer> path = new ArrayDeque<>();
 //        boolean used[] = new boolean[nums.length];
 //        backtracking(nums,used,list,path);
 //
+//
+//        Set<String> set = new HashSet<>();
+//
+//        for(List<Integer> item:list){
+//            String str = build(item);
+//            if(isVaild(str)){
+//                set.add(str);
+//            }
+//        }
 //        return new ArrayList<>(set);
 //    }
 //
-//    public void backtracking(char[] nums, boolean[] used, List<List<Character>> res, Deque<Character> path){
+//    public void backtracking(int[] nums, boolean[] used, List<List<Integer>> res, Deque<Integer> path){
 //
 //        if(path.size() == nums.length){
-//            String str = build(path);
-//            if(!set.contains(str) && isVaild(str)) {
-//                set.add(str);
-//                res.add(new ArrayList<>(path));
-//            }
+//            res.add(new ArrayList<>(path));
 //            return;
 //        }
 //        for(int i=0;i<nums.length;i++){
@@ -93,10 +75,10 @@ public class GenerateParenthesis {
 //        }
 //    }
 //
-//    public String build(Deque<Character> path){
+//    public String build(List<Integer> path){
 //        StringBuilder sb = new StringBuilder();
-//        for(Character item:path){
-//            sb.append(item);
+//        for(Integer item:path){
+//            sb.append(item%2==0?"(":")");
 //        }
 //        return sb.toString();
 //    }

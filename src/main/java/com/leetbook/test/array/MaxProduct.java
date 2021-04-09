@@ -10,13 +10,11 @@ import java.util.*;
 public class MaxProduct {
 
     /**
-     * @tag:回溯法
-     * https://leetcode-cn.com/leetbook/read/top-interview-questions/xmk3rv/
-     * 乘积最大子数组
-     * 参考题解：https://leetcode-cn.com/problems/maximum-product-subarray/solution/duo-chong-si-lu-qiu-jie-by-powcai-3/
-     *
      * @param nums
      * @return
+     * @tag:回溯法 https://leetcode-cn.com/leetbook/read/top-interview-questions/xmk3rv/
+     * 乘积最大子数组
+     * 参考题解：https://leetcode-cn.com/problems/maximum-product-subarray/solution/duo-chong-si-lu-qiu-jie-by-powcai-3/
      */
     public int maxProduct(int[] nums) {
         if (nums == null || nums.length == 0) {
@@ -76,9 +74,6 @@ public class MaxProduct {
             return;
         }
         for (int i = start; i < len; i++) {
-
-            //path.addLast(Arrays.copyOfRange(nums,start,i+1));
-
             path.addLast(new int[]{start, i + 1});
             backtracking(nums, i + 1, len, path, res);
             path.removeLast();

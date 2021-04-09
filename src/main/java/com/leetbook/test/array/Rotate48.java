@@ -27,6 +27,10 @@ public class Rotate48 {
 
     private void rotateHelper(int[][] matrix, int rows, int cols, int rf, int cf) {
 
+        int rowsStart = rf;
+        int rowsEnd = rows - 1 - rf;
+        int colsStart = cf;
+        int colsEnd = cols - 1 - cf;
         for (int wheels = 0; wheels < cols - 1 - (2 * cf); wheels++) {
             /**
              * 向右 保存 3
@@ -34,9 +38,9 @@ public class Rotate48 {
              * 4 5 6
              * 7 8 9
              */
-            int temp = matrix[rf][cols - 1 - cf];
-            for (int i = cols - 1 - cf; i > cf; i--) {
-                matrix[rf][i] = matrix[rf][i - 1];
+            int temp = matrix[rowsStart][colsEnd];
+            for (int i = colsEnd; i > colsStart; i--) {
+                matrix[rowsStart][i] = matrix[rowsStart][i - 1];
             }
 
             /**
@@ -45,9 +49,9 @@ public class Rotate48 {
              * 4 5 2
              * 7 8 6
              */
-            int temp2 = matrix[rows - 1 - rf][cols - 1 - cf];
-            for (int i = rows - 1 - rf; i > rf; i--) {
-                matrix[i][cols - 1 - cf] = matrix[i - 1][cols - 1 - cf];
+            int temp2 = matrix[rowsEnd][colsEnd];
+            for (int i = rowsEnd; i > rowsStart; i--) {
+                matrix[i][colsEnd] = matrix[i - 1][colsEnd];
             }
 
             /**
@@ -56,7 +60,7 @@ public class Rotate48 {
              * 4 5 3
              * 7 8 6
              */
-            matrix[1 + rf][cols - 1 - cf] = temp;
+            matrix[1 + rowsStart][colsEnd] = temp;
 
             /**
              * 向左 保存 7
@@ -64,9 +68,9 @@ public class Rotate48 {
              * 4 5 3
              * 8 6 6
              */
-            temp = matrix[rows - 1 - rf][cf];
-            for (int i = cf; i < cols - 2 - cf; i++) {
-                matrix[rows - 1 - rf][i] = matrix[rows - 1 - rf][i + 1];
+            temp = matrix[rowsEnd][colsStart];
+            for (int i = colsStart; i < colsEnd - 1; i++) {
+                matrix[rowsEnd][i] = matrix[rowsEnd][i + 1];
             }
 
             /**
@@ -75,7 +79,7 @@ public class Rotate48 {
              * 4 5 3
              * 8 9 6
              */
-            matrix[rows - 1 - rf][cols - 2 - cf] = temp2;
+            matrix[rowsEnd][colsEnd - 1] = temp2;
 
             /**
              * 向上
@@ -83,8 +87,8 @@ public class Rotate48 {
              * 8 5 3
              * 8 9 6
              */
-            for (int i = rf; i < rows - 2 - rf; i++) {
-                matrix[i][cf] = matrix[i + 1][cf];
+            for (int i = rowsStart; i < rowsEnd - 1; i++) {
+                matrix[i][colsStart] = matrix[i + 1][colsStart];
             }
             /**
              * 回填 7
@@ -92,7 +96,7 @@ public class Rotate48 {
              * 7 5 3
              * 8 9 6
              */
-            matrix[rows - 2 - rf][cf] = temp;
+            matrix[rowsEnd - 1][colsStart] = temp;
         }
     }
 }

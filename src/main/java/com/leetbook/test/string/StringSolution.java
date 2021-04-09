@@ -41,6 +41,10 @@ public class StringSolution {
 
         (new GenerateParenthesis()).generateParenthesis(3);
 
+        (new LongestValidParentheses()).longestValidParentheses("(())))())(");
+
+        (new MinDistance()).minDistance("sea","ate");
+
     }
 
 }

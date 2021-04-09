@@ -9,7 +9,7 @@ import java.util.List;
  * @Auther: kevin3046@163.com
  * @Date: 2021/3/19 09:44
  * @Description:
- * @tag:回溯法,组合应用
+ * @回溯法，组合应用
  * 78. 子集
  * https://leetcode-cn.com/problems/subsets/
  */
