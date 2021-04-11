@@ -44,5 +44,9 @@ public class ArraySolution {
         (new Subsets()).subsets(new int[]{1,2,3});
 
         (new CoinChange()).coinChange(new int[]{1,2,5},11);
+
+        (new MaximalSquare()).maximalSquare_dp(new char[][]{{'1','0','1','0','0'},{'1','0','1','1','1'},{'1','1','1','1','1'},{'1','0','0','1','0'}});
+
+        (new CombinationSum()).combinationSum(new int[]{2,3,5},8);
     }
 }

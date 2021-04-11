@@ -47,6 +47,13 @@ public class StringSolution {
 
         (new MinWindow()).minWindow("ABAACBAB","ABC");
 
+        (new DecodeString()).decodeString("3[a]2[bc]");
+
+        //["",""]
+        (new GroupAnagrams()).groupAnagrams(new String[]{"eat","tea","tan","ate","nat","bat"});
+
+        //(new GroupAnagrams()).groupAnagrams(new String[]{"","b",""});
+
     }
 
 }
