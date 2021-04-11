@@ -45,6 +45,8 @@ public class StringSolution {
 
         (new MinDistance()).minDistance("sea","ate");
 
+        (new MinWindow()).minWindow("ABAACBAB","ABC");
+
     }
 
 }
