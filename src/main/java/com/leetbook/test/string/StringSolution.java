@@ -49,11 +49,9 @@ public class StringSolution {
 
         (new DecodeString()).decodeString("3[a]2[bc]");
 
-        //["",""]
         (new GroupAnagrams()).groupAnagrams(new String[]{"eat","tea","tan","ate","nat","bat"});
 
-        //(new GroupAnagrams()).groupAnagrams(new String[]{"","b",""});
-
+        (new LetterCombinations()).letterCombinations("23");
     }
 
 }
