@@ -14,7 +14,7 @@ public class SortSolution {
 
         (new WiggleSort()).wiggleSort(new int[]{1,5,1,1,6,4});
 
-        (new FindDuplicate()).findDuplicate2(new int[]{1,2,3,1});
+        (new FindDuplicate()).findDuplicate2(new int[]{1,3,4,2,2});
 
         (new CountSmaller()).countSmaller5(new int[]{3,9,5,2,6,1,3});
 

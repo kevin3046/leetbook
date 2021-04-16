@@ -1,6 +1,6 @@
 package com.leetbook.test.string;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @Auther: kevin3046@163.com
@@ -9,7 +9,7 @@ import java.util.*;
  */
 public class StringSolution {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         (new IsPalindrome()).isPalindrome("A man, a plan, a canal: Panama");
 
@@ -32,10 +32,10 @@ public class StringSolution {
         trie.insert("app");
         trie.search("app");     // 返回 true
 
-        (new IsAnagram()).isAnagram("anagram","nagaram");
+        (new IsAnagram()).isAnagram("anagram", "nagaram");
 
 
-        boolean ret = (new IsMatch()).isMatch2("aaab","a*b");
+        boolean ret = (new IsMatch()).isMatch2("aaab", "a*b");
 
         System.out.println(ret);
 
@@ -43,15 +43,29 @@ public class StringSolution {
 
         (new LongestValidParentheses()).longestValidParentheses("(())))())(");
 
-        (new MinDistance()).minDistance("sea","ate");
+        (new MinDistance()).minDistance("sea", "ate");
 
-        (new MinWindow()).minWindow("ABAACBAB","ABC");
+        (new MinWindow()).minWindow("ABAACBAB", "ABC");
 
         (new DecodeString()).decodeString("3[a]2[bc]");
 
-        (new GroupAnagrams()).groupAnagrams(new String[]{"eat","tea","tan","ate","nat","bat"});
+        (new GroupAnagrams()).groupAnagrams(new String[]{"eat", "tea", "tan", "ate", "nat", "bat"});
 
         (new LetterCombinations()).letterCombinations("23");
+
+        (new LengthOfLongestSubstring()).lengthOfLongestSubstring("abba");
+
+        (new FindSubstring()).findSubstring("barfoothefoobarman",new String[]{"foo","bar"});
+
+        (new LengthOfLongestSubstringTwoDistinct()).lengthOfLongestSubstringTwoDistinct("eceba");
+
+        StringBuilder sb = new StringBuilder();
+        sb.append('c');
+        sb.append('c');
+        sb.append('b');
+        sb.append('c');
+
+        System.out.println(sb.indexOf("b"));
     }
 
 }

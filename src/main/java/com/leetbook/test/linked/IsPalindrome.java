@@ -4,7 +4,8 @@ package com.leetbook.test.linked;
  * @Auther: kevin3046@163.com
  * @Date: 2021/2/23 16:49
  * @Description:
- * @tag:快慢指针，反转链表 请判断一个链表是否为回文链表
+ * @tag:快慢指针，反转链表
+ * 请判断一个链表是否为回文链表
  * https://leetcode-cn.com/leetbook/read/top-interview-questions/xaw0rm/
  * 解题思路：使用快慢指针，拆分链表为两部分，反转第二部分，再进行比对。
  */

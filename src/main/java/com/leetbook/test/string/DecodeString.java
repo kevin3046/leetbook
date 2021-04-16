@@ -6,8 +6,7 @@ import java.util.Stack;
  * @Auther: kevin3046@163.com
  * @Date: 2021/4/11 11:46
  * @Description:
- * @tag:栈
- * 394. 字符串解码
+ * @tag:栈 394. 字符串解码
  * https://leetcode-cn.com/problems/decode-string/
  */
 public class DecodeString {
@@ -28,11 +27,11 @@ public class DecodeString {
                     sb.append(c);
                 }
                 StringBuilder sb2 = new StringBuilder();
-                while (true){
-                    if(stack.isEmpty()){
+                while (true) {
+                    if (stack.isEmpty()) {
                         break;
                     }
-                    if(!Character.isDigit(stack.peek())){
+                    if (!Character.isDigit(stack.peek())) {
                         break;
                     }
                     sb2.append(stack.pop());

@@ -1,6 +1,9 @@
 package com.leetbook.test.heap;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.PriorityQueue;
 
 /**
  * @Auther: kevin3046@163.com
@@ -39,7 +42,7 @@ public class MaxSlidingWindow {
         ans[0] = pq.peek()[0];
         for (int i = k; i < n; ++i) {
             pq.offer(new int[]{nums[i], i});
-            //这个值在数组 \textit{nums}nums 中的位置出现在滑动窗口左边界的左侧。
+            //这个值在数组 nums 中的位置出现在滑动窗口左边界的左侧。
             // 因此，当我们后续继续向右移动窗口时，这个值就永远不可能出现在滑动窗口中了，我们可以将其永久地从优先队列中移除
             while (pq.peek()[1] <= i - k) {
                 pq.poll();

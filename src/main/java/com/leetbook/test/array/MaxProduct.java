@@ -12,29 +12,31 @@ public class MaxProduct {
     /**
      * @param nums
      * @return
-     * @tag:回溯法 https://leetcode-cn.com/leetbook/read/top-interview-questions/xmk3rv/
+     * @tag:动态规划
+     * https://leetcode-cn.com/leetbook/read/top-interview-questions/xmk3rv/
      * 乘积最大子数组
      * 参考题解：https://leetcode-cn.com/problems/maximum-product-subarray/solution/duo-chong-si-lu-qiu-jie-by-powcai-3/
      */
     public int maxProduct(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return 0;
+        int length = nums.length;
+        int[] maxF = new int[length];
+        int[] minF = new int[length];
+        System.arraycopy(nums, 0, maxF, 0, length);
+        System.arraycopy(nums, 0, minF, 0, length);
+        for (int i = 1; i < length; ++i) {
+            maxF[i] = Math.max(maxF[i - 1] * nums[i], Math.max(nums[i], minF[i - 1] * nums[i]));
+            minF[i] = Math.min(minF[i - 1] * nums[i], Math.min(nums[i], maxF[i - 1] * nums[i]));
         }
-        int res = nums[0];
-        int pre_max = nums[0];
-        int pre_min = nums[0];
-        for (int i = 1; i < nums.length; i++) {
-            int cur_max = Math.max(Math.max(pre_max * nums[i], pre_min * nums[i]), nums[i]);
-            int cur_min = Math.min(Math.min(pre_max * nums[i], pre_min * nums[i]), nums[i]);
-            res = Math.max(res, cur_max);
-            pre_max = cur_max;
-            pre_min = cur_min;
+        int ans = maxF[0];
+        for (int i = 1; i < length; ++i) {
+            ans = Math.max(ans, maxF[i]);
         }
-        return res;
+        return ans;
     }
 
     /**
-     * 使用回溯法遍历出所有组合
+     * @tag:回溯法,组合应用
+     * 使用回溯法遍历出所有组合（超出时间限制）
      *
      * @param nums
      * @return

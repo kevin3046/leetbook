@@ -35,20 +35,25 @@ public class MaxSubArray {
 
     /**
      * 动态规划优化版
+     *
      * @param nums
      * @return
      */
     public int maxSubArray2(int[] nums) {
-        int pre = 0, max = nums[0];
-        for (int i = 0; i < nums.length; i++) {
-            pre = Math.max(pre + nums[i], nums[i]);
-            max = Math.max(max, pre);
+
+        int[] maxF = new int[nums.length];
+        System.arraycopy(nums, 0, maxF, 0, nums.length);
+        int max = maxF[0];
+        for (int i = 1; i < nums.length; i++) {
+            maxF[i] = Math.max(maxF[i - 1] + nums[i], nums[i]);
+            max = Math.max(maxF[i], max);
         }
         return max;
     }
 
     /**
      * 最大子序列和，返回最大值，开始和结束的索引
+     *
      * @param nums
      * @return
      */

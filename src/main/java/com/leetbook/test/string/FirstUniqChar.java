@@ -10,6 +10,7 @@ public class FirstUniqChar {
     /**
      * https://leetcode-cn.com/leetbook/read/top-interview-questions/xaph0j/
      * 字符串中的第一个唯一字符
+     *
      * @param s
      * @return
      */
@@ -19,8 +20,8 @@ public class FirstUniqChar {
             table[s.charAt(i) - 'a']++;
         }
 
-        for(int i=0;i<s.length();i++){
-            if(table[s.charAt(i) - 'a'] == 1){
+        for (int i = 0; i < s.length(); i++) {
+            if (table[s.charAt(i) - 'a'] == 1) {
                 return i;
             }
         }

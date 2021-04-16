@@ -8,14 +8,14 @@ package com.leetbook.test.array;
 public class SearchMatrix {
 
     /**
+     * @param matrix
+     * @param target
+     * @return
      * @tag:二分查找
      * 搜索二维矩阵 II
      * https://leetcode-cn.com/leetbook/read/top-interview-questions/xmjzs7/
      * 解题思路：二分查找binarySearch
      * 参考题解：https://leetcode-cn.com/problems/search-a-2d-matrix-ii/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-5-4/
-     * @param matrix
-     * @param target
-     * @return
      */
     public boolean searchMatrix(int[][] matrix, int target) {
         if (matrix.length == 0 || matrix[0].length == 0) {
@@ -25,7 +25,7 @@ public class SearchMatrix {
             if (matrix[i][0] > target) {
                 break;
             }
-            if(matrix[i][matrix[i].length - 1] < target){
+            if (matrix[i][matrix[i].length - 1] < target) {
                 continue;
             }
             int col = binarySearch(matrix[i], target);

@@ -3,6 +3,7 @@ package com.leetbook.test.stack;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @Auther: kevin3046@163.com
@@ -12,6 +13,9 @@ import java.util.List;
 public class StackSolution {
 
     public static void main(String[] args) {
+
+        ReentrantLock lock = new ReentrantLock();
+        lock.lock();
         MinStack obj = new MinStack();
         obj.push(-2);
         obj.push(0);

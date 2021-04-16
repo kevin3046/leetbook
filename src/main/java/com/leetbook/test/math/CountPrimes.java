@@ -6,6 +6,7 @@ package com.leetbook.test.math;
  * @Description:
  * @tag:数学
  * 计数质数
+ * 质数，除了
  * https://leetcode-cn.com/leetbook/read/top-interview-questions/x20yuc/
  * 参考题解：https://leetcode-cn.com/problems/count-primes/solution/ji-shu-zhi-shu-by-leetcode-solution/
  */

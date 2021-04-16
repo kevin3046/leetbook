@@ -9,7 +9,7 @@ public class ArraySolution {
 
     public static void main(String[] args){
 
-        (new MaxProduct()).maxProductIndex(new int[]{2,3,-2,4});
+        (new MaxProduct()).maxProduct(new int[]{2,3,-2,4});
 
         (new MajorityElement()).majorityElement(new int[]{3,2,3});
 

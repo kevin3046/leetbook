@@ -1,8 +1,5 @@
 package com.leetbook.test.hash;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * @Auther: kevin3046@163.com
  * @Date: 2021/2/24 09:58
@@ -29,7 +26,7 @@ public class TitleToNumber {
 
         int res = 0;
 
-        for(int i=0;i<s.length();i++){
+        for (int i = 0; i < s.length(); i++) {
             int a = s.charAt(i) - 'A' + 1;
             //res = res * 26 + map.get(s.charAt(i));
             res = res * 26 + a;

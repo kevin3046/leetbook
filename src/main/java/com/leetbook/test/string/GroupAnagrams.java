@@ -6,8 +6,7 @@ import java.util.*;
  * @Auther: kevin3046@163.com
  * @Date: 2021/4/11 13:01
  * @Description:
- * @tag:哈希表+排序
- * 49. 字母异位词分组
+ * @tag:哈希表+排序 49. 字母异位词分组
  * https://leetcode-cn.com/problems/group-anagrams/
  */
 public class GroupAnagrams {

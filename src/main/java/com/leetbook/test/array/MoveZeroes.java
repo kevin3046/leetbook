@@ -31,21 +31,24 @@ public class MoveZeroes {
 
     /**
      * 参考题解：https://leetcode-cn.com/problems/move-zeroes/solution/dong-hua-yan-shi-283yi-dong-ling-by-wang_ni_ma/
+     * @tag:双指针
      * @param nums
      */
     public void moveZeroes2(int[] nums) {
         if(nums==null) {
             return;
         }
-        //两个指针i和j
+        //第一次遍历的时候，j指针记录非0的个数，只要是非0的统统都赋给nums[j]
         int j = 0;
-        for(int i=0;i<nums.length;i++) {
-            //当前元素!=0，就把其交换到左边，等于0的交换到右边
+        for(int i=0;i<nums.length;++i) {
             if(nums[i]!=0) {
-                int tmp = nums[i];
-                nums[i] = nums[j];
-                nums[j++] = tmp;
+                nums[j++] = nums[i];
             }
+        }
+        //非0元素统计完了，剩下的都是0了
+        //所以第二次遍历把末尾的元素都赋为0即可
+        for(int i=j;i<nums.length;++i) {
+            nums[i] = 0;
         }
     }
 

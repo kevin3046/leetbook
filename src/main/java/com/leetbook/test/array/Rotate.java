@@ -10,18 +10,19 @@ public class Rotate {
     /**
      * https://leetcode-cn.com/leetbook/read/top-interview-questions/xm42hs/
      * 旋转数组
+     *
      * @param nums
      * @param k
      */
     public void rotate(int[] nums, int k) {
-        if(nums.length==0 || k == 0) {
+        if (nums.length == 0 || k == 0) {
             return;
         }
         int n = nums.length;
-        for(int i=0;i<k;i++){
-            int temp = nums[n-1];
-            for(int j=n-1;j>0;j--){
-                nums[j] = nums[j-1];
+        for (int i = 0; i < k; i++) {
+            int temp = nums[n - 1];
+            for (int j = n - 1; j > 0; j--) {
+                nums[j] = nums[j - 1];
             }
             nums[0] = temp;
         }
@@ -30,6 +31,7 @@ public class Rotate {
     /**
      * 第二种解法
      * 参考题解：https://leetcode-cn.com/problems/rotate-array/solution/xuan-zhuan-shu-zu-by-leetcode-solution-nipk/
+     *
      * @param nums
      * @param k
      */

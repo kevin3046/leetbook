@@ -1,12 +1,10 @@
 package com.leetbook.test.array;
 
-import java.util.Arrays;
-
 /**
  * @Auther: kevin3046@163.com
  * @Date: 2021/3/19 10:04
  * @Description:
- * tag:递归+记忆化
+ * @tag:递归+记忆化
  * 300. 最长递增子序列
  * https://leetcode-cn.com/problems/longest-increasing-subsequence/
  */
