@@ -53,19 +53,21 @@ public class StringSolution {
 
         (new LetterCombinations()).letterCombinations("23");
 
-        (new LengthOfLongestSubstring()).lengthOfLongestSubstring("abba");
+        (new LengthOfLongestSubstring()).lengthOfLongestSubstring("pwwkew");
 
         (new FindSubstring()).findSubstring("barfoothefoobarman",new String[]{"foo","bar"});
 
-        (new LengthOfLongestSubstringTwoDistinct()).lengthOfLongestSubstringTwoDistinct("eceba");
+        (new LengthOfLongestSubstringTwoDistinct()).lengthOfLongestSubstringTwoDistinct2("eceba");
 
-        StringBuilder sb = new StringBuilder();
-        sb.append('c');
-        sb.append('c');
-        sb.append('b');
-        sb.append('c');
 
-        System.out.println(sb.indexOf("b"));
+        (new CheckInclusion()).checkInclusion2("adc","dcda");
+
+        (new MinWindow2()).isSubseq("bcdeb","bdeb");
+
+        //"jmeqksfrsdcmsiwvaovztaqenprpvnbstl"
+        //"k"
+        (new MinWindow2()).minWindow2("aabccdebdde","bde");
+
     }
 
 }

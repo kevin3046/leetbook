@@ -9,8 +9,7 @@ import java.util.Map;
  * @Auther: kevin3046@163.com
  * @Date: 2021/4/16 13:55
  * @Description:
- * @tag:滑动窗口
- * 30. 串联所有单词的子串
+ * @tag:滑动窗口 30. 串联所有单词的子串
  * https://leetcode-cn.com/problems/substring-with-concatenation-of-all-words/
  */
 public class FindSubstring {

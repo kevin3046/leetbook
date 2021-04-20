@@ -48,5 +48,9 @@ public class ArraySolution {
         (new MaximalSquare()).maximalSquare_dp(new char[][]{{'1','0','1','0','0'},{'1','0','1','1','1'},{'1','1','1','1','1'},{'1','0','0','1','0'}});
 
         (new CombinationSum()).combinationSum(new int[]{2,3,5},8);
+
+        (new MinSubArrayLen()).minSubArrayLen(7,new int[]{2,3,1,2,4,3});
+
+
     }
 }
