@@ -7,8 +7,7 @@ import java.util.Set;
  * @Auther: kevin3046@163.com
  * @Date: 2021/3/4 16:04
  * @Description:
- * @tag:哈希表
- * 缺失数字
+ * @tag:哈希表 缺失数字
  * https://leetcode-cn.com/leetbook/read/top-interview-questions/x27sii/
  */
 public class MissingNumber {

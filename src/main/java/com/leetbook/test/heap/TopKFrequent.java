@@ -9,8 +9,7 @@ import java.util.Map;
  * @Auther: kevin3046@163.com
  * @Date: 2021/2/20 14:17
  * @Description:
- * @tag:哈希表
- * 前 K 个高频元素
+ * @tag:哈希表 前 K 个高频元素
  * https://leetcode-cn.com/leetbook/read/top-interview-questions/xau4ci/
  * 解题思路：哈希表按照value排序
  */

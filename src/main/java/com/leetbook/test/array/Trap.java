@@ -3,11 +3,47 @@ package com.leetbook.test.array;
 /**
  * @Auther: kevin3046@163.com
  * @Date: 2021/3/11 16:20
- * @Description:
- * 42. 接雨水
+ * @Description: 42. 接雨水
  * https://leetcode-cn.com/problems/trapping-rain-water/
  */
 public class Trap {
+
+    public int trap2(int[] height) {
+
+        int res = 0;
+        int maxLeft = 0;
+        int maxRight = 0;
+        int rightIndex = 0;
+
+        for (int i = 1; i < height.length; i++) {
+
+            if (height[i - 1] >= maxLeft) {
+                maxLeft = 0;
+                for (int j = i - 1; j >= 0; j--) {
+                    maxLeft = Math.max(maxLeft, height[j]);
+                }
+            }
+
+            if (i >= rightIndex) {
+                maxRight = 0;
+                for (int j = i + 1; j < height.length; j++) {
+                    if (height[j] > maxRight) {
+                        maxRight = height[j];
+                        rightIndex = j;
+                    }
+                }
+            }
+
+
+            int min = Math.min(maxLeft, maxRight);
+
+            if (min > height[i]) {
+                res += min - height[i];
+            }
+
+        }
+        return res;
+    }
 
     public int trap(int[] height) {
 
@@ -56,41 +92,4 @@ public class Trap {
         return res;
     }
 
-
-    public int trap2(int[] height) {
-
-        int res = 0;
-        int maxLeft = 0;
-        int maxRight = 0;
-        int rightIndex = 0;
-
-        for (int i = 1; i < height.length; i++) {
-
-            if (height[i - 1] >= maxLeft) {
-                maxLeft = 0;
-                for (int j = i - 1; j >= 0; j--) {
-                    maxLeft = Math.max(maxLeft, height[j]);
-                }
-            }
-
-            if (i >= rightIndex) {
-                maxRight = 0;
-                for (int j = i + 1; j < height.length; j++) {
-                    if (height[j] > maxRight) {
-                        maxRight = height[j];
-                        rightIndex = j;
-                    }
-                }
-            }
-
-
-            int min = Math.min(maxLeft, maxRight);
-
-            if (min > height[i]) {
-                res += min - height[i];
-            }
-
-        }
-        return res;
-    }
 }

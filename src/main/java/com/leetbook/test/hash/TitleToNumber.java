@@ -3,8 +3,7 @@ package com.leetbook.test.hash;
 /**
  * @Auther: kevin3046@163.com
  * @Date: 2021/2/24 09:58
- * @Description:
- * Excel表列序号
+ * @Description: Excel表列序号
  * https://leetcode-cn.com/leetbook/read/top-interview-questions/xa6dkt/
  */
 public class TitleToNumber {

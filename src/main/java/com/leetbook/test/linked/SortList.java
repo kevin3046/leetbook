@@ -12,13 +12,13 @@ package com.leetbook.test.linked;
 public class SortList {
 
     public ListNode sortList(ListNode head) {
-        if(head==null || head.next==null) {
+        if (head == null || head.next == null) {
             return head;
         }
         ListNode slow = head; //慢指针
         ListNode fast = head.next; //快指针
 
-        while(fast!=null && fast.next!=null){ //快慢指针找到链表中点
+        while (fast != null && fast.next != null) { //快慢指针找到链表中点
             slow = slow.next; //慢指针走一步
             fast = fast.next.next; //快指针走两步
         }
@@ -27,10 +27,10 @@ public class SortList {
 
         ListNode left = sortList(head); //递归排序前一段链表
         ListNode right = sortList(rightHead); //递归排序后一段链表
-        return merge(left,right);
+        return merge(left, right);
     }
 
-    public ListNode merge(ListNode h1,ListNode h2) { //合并两个有序链表
+    public ListNode merge(ListNode h1, ListNode h2) { //合并两个有序链表
         ListNode dummy = new ListNode(-1);
         ListNode p = dummy;
         while (h1 != null && h2 != null) {

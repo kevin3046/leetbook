@@ -12,7 +12,7 @@ public class MathSolution {
         // [[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]
         (new MaxPoints()).maxPoints(new int[][]{{1,1},{3,2},{5,3},{4,1},{2,3},{1,4}});
 
-        (new FractionToDecimal()).fractionToDecimal(4,10);
+        (new FractionToDecimal()).fractionToDecimal(4,333);
 
         (new CountPrimes()).countPrimes(10);
 

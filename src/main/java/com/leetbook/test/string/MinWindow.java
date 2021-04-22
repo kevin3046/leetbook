@@ -27,9 +27,10 @@ public class MinWindow {
         int len = Integer.MAX_VALUE, ansL = -1, ansR = -1;
         int sLen = s.length();
         //1、两个指针，l和r，任意时刻，只有一个指针在运动
-        //2、r指针用来扩展窗口，l指针用来搜索窗口
+        //2、r指针用来扩展窗口，l指针用来收缩窗口
         //3、当r指针不断扩张，包含目标字符串的时候，来收缩l指针
         //4、判断收缩之后的窗口，是否能包含目标字符串，收缩到一定程度之后，求最小。
+        //5、不关注t的顺序
         while (r < sLen) {
             ++r;
             if (r < sLen && ori.containsKey(s.charAt(r))) {

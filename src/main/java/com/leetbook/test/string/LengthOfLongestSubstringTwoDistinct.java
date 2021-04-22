@@ -55,6 +55,7 @@ public class LengthOfLongestSubstringTwoDistinct {
     public int lengthOfLongestSubstringTwoDistinct2(String s) {
         Map<Character, Integer> map = new HashMap<>();
         int res = 0;
+        //扩展右指针,满足条件后,移除左侧元素
         for (int l = 0, r = 0; r < s.length(); r++) {
             char c = s.charAt(r);
             map.put(c, map.getOrDefault(c, 0) + 1);

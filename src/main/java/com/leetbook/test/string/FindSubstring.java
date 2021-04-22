@@ -23,6 +23,8 @@ public class FindSubstring {
         }
         int oneLen = words[0].length();
         int allLen = words[0].length() * words.length;
+        //words的每个单词长度相同,遍历时截取allLen的字符串出来,组成map进行比较
+        //不依赖顺序
         for (int i = 0; i <= s.length() - allLen; i++) {
 
             String temp = s.substring(i, i + allLen);

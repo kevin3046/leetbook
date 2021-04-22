@@ -4,6 +4,9 @@ package com.leetbook.test.string;
  * @Auther: kevin3046@163.com
  * @Date: 2021/4/20 13:03
  * @Description:
+ * @tag:滑动窗口
+ * 727. 最小窗口子序列
+ * https://leetcode-cn.com/problems/minimum-window-subsequence/
  */
 public class MinWindow2 {
 
