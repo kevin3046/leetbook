@@ -52,5 +52,8 @@ public class ArraySolution {
         (new MinSubArrayLen()).minSubArrayLen(7,new int[]{2,3,1,2,4,3});
 
 
+        (new CanJump()).canJump(new int[]{2,3,1,1,4});
+
+
     }
 }

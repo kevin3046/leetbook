@@ -6,6 +6,9 @@ import java.util.*;
  * @Auther: kevin3046@163.com
  * @Date: 2021/3/19 15:19
  * @Description:
+ * @tag:深度优先遍历
+ * 22. 括号生成
+ * https://leetcode-cn.com/problems/generate-parentheses/
  */
 public class GenerateParenthesis {
 
