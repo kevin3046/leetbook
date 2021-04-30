@@ -1,5 +1,7 @@
 package com.leetbook.test.array;
 
+import java.util.*;
+
 /**
  * @Auther: kevin3046@163.com
  * @Date: 2021/2/16 12:52
@@ -54,6 +56,18 @@ public class ArraySolution {
 
         (new CanJump()).canJump(new int[]{2,3,1,1,4});
 
+        (new SortColors()).sortColors(new int[]{2,0,2,1,1,0});
+
+        (new MaximalRectangle()).maximalRectangle(new char[][]{{'0','1','1'},{'0','1','1'},{'1','1','1'},{'1','1','1'}});
+
+        (new LongestConsecutive()).longestConsecutive(new int[]{1,2,0,1});
+
+        (new NumSquares()).numSquares(13);
+
+        (new FirstMissingPositive()).firstMissingPositive(new int[]{3,4,-1,1});
+
+        //6 1 2 7 9 3 4 5 10 8
+        (new QuickSort()).mySort(new int[]{6,1,2,7,9,3,4,5,10,8});
 
     }
 }

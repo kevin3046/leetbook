@@ -35,13 +35,13 @@ public class StringSolution {
         (new IsAnagram()).isAnagram("anagram", "nagaram");
 
 
-        boolean ret = (new IsMatch()).isMatch2("aaab", "a*b");
+        boolean ret = (new IsMatch()).isMatch2("aab", "c*a*b");
 
         System.out.println(ret);
 
         (new GenerateParenthesis()).generateParenthesis(3);
 
-        (new LongestValidParentheses()).longestValidParentheses("(())))())(");
+        (new LongestValidParentheses()).longestValidParentheses(")(()");
 
         (new MinDistance()).minDistance("sea", "ate");
 
@@ -67,6 +67,10 @@ public class StringSolution {
         //"jmeqksfrsdcmsiwvaovztaqenprpvnbstl"
         //"k"
         (new MinWindow2()).minWindow2("aabccdebdde","bde");
+
+        (new RemoveInvalidParentheses()).removeInvalidParentheses("(a)())()");
+
+        (new CountAndSay()).countAndSay(6);
 
     }
 
