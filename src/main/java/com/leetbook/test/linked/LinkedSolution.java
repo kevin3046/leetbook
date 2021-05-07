@@ -45,18 +45,23 @@ public class LinkedSolution {
         ListNode res2 = (new SortList()).sortList(head);
 
         //[1,2]
-        ListNode head1 = new ListNode(1);
-        head1.next = new ListNode(2);
-        (new IsPalindrome()).isPalindrome(head1);
+        ListNode head1 = new ListNode(4);
+        head1.next = new ListNode(3);
+        head1.next.next = new ListNode(2);
+        head1.next.next.next = new ListNode(1);
+        head1.next.next.next.next = new ListNode(5);
+        //(new IsPalindrome()).isPalindrome(head1);
 
         //[1,2,3,4,5]
-        ListNode head2 = new ListNode(1);
+        ListNode head2 = new ListNode(3);
         head2.next = new ListNode(2);
-        head2.next.next = new ListNode(3);
-        head2.next.next.next = new ListNode(4);
-        head2.next.next.next.next = new ListNode(5);
+        head2.next.next = new ListNode(1);
+        head2.next.next.next = new ListNode(5);
+        //head2.next.next.next = new ListNode(4);
+        //head2.next.next.next.next = new ListNode(5);
 
-        (new OddEvenList()).oddEvenList(head2);
+        //(new ReverseKGroup()).reverseKGroup(head2,2);
+        //(new OddEvenList()).oddEvenList(head2);
 
         //3,2,0,-4
         ListNode head3 = new ListNode(3);
@@ -67,4 +72,5 @@ public class LinkedSolution {
         (new DetectCycle()).detectCycle(head3);
 
     }
+
 }

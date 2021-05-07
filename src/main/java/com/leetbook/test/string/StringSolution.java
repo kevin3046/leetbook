@@ -1,6 +1,6 @@
 package com.leetbook.test.string;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @Auther: kevin3046@163.com

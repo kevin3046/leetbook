@@ -12,7 +12,7 @@ public class ReverseList {
     public ListNode reverseList(ListNode head) {
         ListNode prev = null;
         ListNode current = head;
-        while (current!=null){
+        while (current != null) {
             ListNode temp = current.next;
             current.next = prev;
             prev = current;
@@ -20,4 +20,9 @@ public class ReverseList {
         }
         return prev;
     }
+
+
+
 }
+
+
