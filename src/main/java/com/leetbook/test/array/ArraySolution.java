@@ -70,5 +70,9 @@ public class ArraySolution {
         //6 1 2 7 9 3 4 5 10 8
         (new QuickSort()).mySort(new int[]{6, 1, 2, 7, 9, 3, 4, 5, 10, 8});
 
+        (new FindMin2()).findMin(new int[]{2,2,2,0,1});
+
+        (new Search()).search(new int[]{4,5,6,7,0,1,2},0);
+
     }
 }
